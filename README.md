@@ -8,12 +8,10 @@ ToDo list application made with android compose and firebase.
 
 - UI/UX
   - [ ] List page
-    - [ ] Task list
+    - [x] Task list
       - [x] Show list
-      - [ ] Scrollable
-    - [ ] Add Button
-    - [ ] Slide card to right or left to delete
-      - [ ] Undo popup like gmail
+      - [x] Scrollable
+    - [x] Add Button
     - [ ] Task card
       - [ ] Checkbox to set task to Done
   - [ ] Edit page
@@ -26,7 +24,9 @@ ToDo list application made with android compose and firebase.
 - [ ] Data binding between firebase and UI
   - List Page
     - [ ] Load and show task
-    - [ ] Check task to set to DONE.
+    - [ ] Check task to set to DON
+    - [ ] Slide card to right or left to delete
+      - [ ] Undo popup like gmail
   - Task Page
     - [ ] Load data of task
     - [ ] Save when navback
@@ -34,8 +34,13 @@ ToDo list application made with android compose and firebase.
 
 ### Backlog
   
-  - [ ] Category
-  - [ ] Category [Chip](https://developer.android.com/develop/ui/compose/components/chip) to filter list
-  - [ ] Sort list: DOING then DONE
-  - [ ] Design
+- [ ] Category
+- [ ] Category [Chip](https://developer.android.com/develop/ui/compose/components/chip) to filter list
+- [ ] Sort list: DOING then DONE
+- [ ] Design
+- [ ] [App bar](https://developer.android.com/develop/ui/compose/components/app-bars)
+- [ ] Accessibility, contentDescription,...
 
+### Goal
+
+Publish on Play Store ?
