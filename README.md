@@ -16,6 +16,7 @@ ToDo list application made with android compose and firebase.
       - [x] Checkbox to set task to Done
       - [x] Date in card
   - [ ] Edit page
+    - [Datepicker](https://developer.android.com/develop/ui/compose/components/datepickers) with calendar icon
   - Navigation
     - [ ] Click card to go to edit page
 - Firebase configuration
@@ -27,7 +28,7 @@ ToDo list application made with android compose and firebase.
     - [ ] Load and show task
     - [ ] Check task to set to DON
     - [ ] Slide card to right or left to delete
-      - [ ] Undo popup like gmail
+      - [ ] Undo [snackbar](https://developer.android.com/develop/ui/compose/components/snackbar)
   - Task Page
     - [ ] Load data of task
     - [ ] Save when navback
