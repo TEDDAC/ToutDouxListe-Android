@@ -1,5 +1,6 @@
 package com.teddac.toutdouxliste.ui.component
 
+import android.graphics.fonts.FontStyle
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,7 +10,10 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun TaskCard(){
@@ -18,10 +22,12 @@ fun TaskCard(){
             defaultElevation = 6.dp
         ),
         modifier = Modifier
-            .padding(8.dp)
             .fillMaxWidth()
     ) {
-        Column {
+        Column (
+            modifier = Modifier
+                .padding(8.dp)
+        ) {
             TaskCardTitle("Title")
             TaskCardDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, ullamco laboris nisi ut aliquip")
         }
@@ -32,8 +38,10 @@ fun TaskCard(){
 fun TaskCardTitle(text: String = ""){
     Text(
         text,
-        modifier = Modifier
-            .size(24.dp)
+        style = TextStyle(
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold
+        )
     )
 }
 
