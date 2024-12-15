@@ -12,8 +12,9 @@ ToDo list application made with android compose and firebase.
       - [x] Show list
       - [x] Scrollable
     - [x] Add Button
-    - [ ] Task card
-      - [ ] Checkbox to set task to Done
+    - [x] Task card
+      - [x] Checkbox to set task to Done
+      - [x] Date in card
   - [ ] Edit page
   - Navigation
     - [ ] Click card to go to edit page
@@ -37,9 +38,10 @@ ToDo list application made with android compose and firebase.
 - [ ] Category
 - [ ] Category [Chip](https://developer.android.com/develop/ui/compose/components/chip) to filter list
 - [ ] Sort list: DOING then DONE
-- [ ] Design
+- [ ] Design, [Material](https://m3.material.io/)
 - [ ] [App bar](https://developer.android.com/develop/ui/compose/components/app-bars)
 - [ ] Accessibility, contentDescription,...
+- [ ] Notifications
 
 ### Goal
 
