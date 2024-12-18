@@ -17,7 +17,8 @@ ToDo list application made with android compose and firebase.
       - [x] Date in card
   - [ ] Edit page
     - [x] [Datepicker](https://developer.android.com/develop/ui/compose/components/datepickers) with calendar icon
-    - [ ] Basic Time picker (advanced are not user friendly)
+    - [x] Datepicker
+    - [x] Basic Time picker (advanced are not user friendly)     
   - Navigation
     - [ ] Click card to go to edit page
   - [ ] [App bar](https://developer.android.com/develop/ui/compose/components/app-bars)
