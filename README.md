@@ -7,6 +7,7 @@ ToDo list application made with android compose and firebase.
 ### Release 1
 
 - UI/UX
+  - [x] [edge-to-edge](https://developer.android.com/develop/ui/compose/layouts/insets?hl=fr), Windows inset and component behind system bar.
   - [ ] List page
     - [x] Task list
       - [x] Show list
@@ -17,7 +18,7 @@ ToDo list application made with android compose and firebase.
       - [x] Date in card
   - [ ] Edit page
     - [x] [Datepicker](https://developer.android.com/develop/ui/compose/components/datepickers) with calendar icon
-    - [x] Datepicker
+    - [x] Advanced Time picker
     - [x] Basic Time picker (advanced are not user friendly)     
   - Navigation
     - [ ] Click card to go to edit page
