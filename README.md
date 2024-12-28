@@ -8,7 +8,7 @@ ToDo list application made with android compose and firebase.
 
 - UI/UX
   - [x] [edge-to-edge](https://developer.android.com/develop/ui/compose/layouts/insets?hl=fr), Windows inset and component behind system bar.
-  - [ ] List page
+  - [x] List page
     - [x] Task list
       - [x] Show list
       - [x] Scrollable
@@ -16,7 +16,7 @@ ToDo list application made with android compose and firebase.
     - [x] Task card
       - [x] Checkbox to set task to Done
       - [x] Date in card
-  - [ ] Edit page
+  - [x] Edit page
     - [x] [Datepicker](https://developer.android.com/develop/ui/compose/components/datepickers) with calendar icon
     - [x] Advanced Time picker
     - [x] Basic Time picker (advanced are not user friendly)     
@@ -33,15 +33,9 @@ ToDo list application made with android compose and firebase.
       - [ ] Back button
       - [ ] Delete
       - [ ] Validate / save
-- Firebase configuration
-  - [ ] Create project in firebase console
-  - [ ] Configure app
-  - [ ] Create service to manage data
-    - [ ] Create
-    - [ ] Read
-    - [ ] Update
-    - [ ] Delete
-- [ ] Data binding between firebase and UI
+- [ ] Data binding between database and UI
+  - [ ] Initialize database
+  - [ ] Create Entity
   - List Page
     - [ ] Load and show task
     - [ ] Check task to set to DON
@@ -58,10 +52,25 @@ ToDo list application made with android compose and firebase.
 - [ ] Category [Chip](https://developer.android.com/develop/ui/compose/components/chip) to filter list
 - [ ] Sort list: DOING then DONE
 - [ ] Design, [Material](https://m3.material.io/)
+  - [ ] Theming
 - [ ] Logo
 - [ ] Accessibility, contentDescription,...
 - [ ] Notifications
 - [ ] Splash screen
+- [ ] Multilingual
+
+#### Cancelled
+
+I want to use local data base
+
+- Firebase configuration
+  - [ ] Create project in firebase console
+  - [ ] Configure app
+  - [ ] Create service to manage data
+    - [ ] Create
+    - [ ] Read
+    - [ ] Update
+    - [ ] Delete
 
 ### Goal
 
