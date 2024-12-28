@@ -53,6 +53,7 @@ ToDo list application made with android compose and firebase.
 - [ ] Sort list: DOING then DONE
 - [ ] Design, [Material](https://m3.material.io/)
   - [ ] Theming
+  - [ ] Shared app bar beetween screen
 - [ ] Logo
 - [ ] Accessibility, contentDescription,...
 - [ ] Notifications

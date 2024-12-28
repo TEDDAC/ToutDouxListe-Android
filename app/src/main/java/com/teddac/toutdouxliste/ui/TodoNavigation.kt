@@ -56,7 +56,9 @@ fun TodoNavigation(
         composable(
             route = TodoScreen.Edit.name
         ){
-            EditPage()
+            EditPage(
+                navigateBack = { navController.popBackStack() }
+            )
         }
     }
 }
