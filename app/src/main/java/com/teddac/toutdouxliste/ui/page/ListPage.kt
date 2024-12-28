@@ -15,13 +15,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.teddac.toutdouxliste.ui.component.TaskCard
 import com.teddac.toutdouxliste.ui.theme.ToutDouxListeTheme
 
 @Composable
-fun ListPage(modifier: Modifier = Modifier){
+fun ListPage(
+    onSelectionChange: () -> Unit,
+    modifier: Modifier = Modifier
+){
     Box {
-        TaskList()
+        TaskList(onSelectionChange = onSelectionChange)
         FloatingActionButton(
             onClick = {},
             modifier = Modifier
@@ -33,7 +37,11 @@ fun ListPage(modifier: Modifier = Modifier){
 }
 
 @Composable
-fun TaskList(modifier: Modifier = Modifier){
+fun TaskList(
+    onSelectionChange: () -> Unit,
+    modifier: Modifier = Modifier
+){
+    val navController = rememberNavController()
     LazyColumn (
         horizontalAlignment = Alignment.CenterHorizontally,
         contentPadding = PaddingValues(16.dp), // padding around list, not between each element
@@ -41,40 +49,40 @@ fun TaskList(modifier: Modifier = Modifier){
         modifier = Modifier
     ) {
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
         item {
-            TaskCard()
+            TaskCard(onClick = onSelectionChange)
         }
     }
 }
@@ -83,6 +91,6 @@ fun TaskList(modifier: Modifier = Modifier){
 @Composable
 fun listPagePreview() {
     ToutDouxListeTheme {
-        ListPage()
+        ListPage({})
     }
 }

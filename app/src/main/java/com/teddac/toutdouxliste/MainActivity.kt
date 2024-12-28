@@ -12,6 +12,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.teddac.toutdouxliste.ui.config.TodoScreen
 import com.teddac.toutdouxliste.ui.page.EditPage
 import com.teddac.toutdouxliste.ui.page.ListPage
 import com.teddac.toutdouxliste.ui.theme.ToutDouxListeTheme
@@ -32,7 +36,21 @@ class MainActivity : ComponentActivity() {
                         .safeDrawingPadding(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ListPage()
+                    val navController = rememberNavController()
+
+                    NavHost(
+                        navController = navController,
+                        startDestination = TodoScreen.List.name
+                    ){
+                        composable(route = TodoScreen.List.name){
+                            ListPage(
+                                onSelectionChange = {navController.navigate(TodoScreen.Edit.name)}
+                            )
+                        }
+                        composable(route = TodoScreen.Edit.name){
+                            EditPage()
+                        }
+                    }
                 }
             }
         }
@@ -43,6 +61,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     ToutDouxListeTheme {
-        ListPage()
+        ListPage({})
     }
 }

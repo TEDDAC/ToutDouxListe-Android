@@ -1,5 +1,6 @@
 package com.teddac.toutdouxliste.ui.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,10 +20,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun TaskCard(){
+fun TaskCard(
+    onClick: () -> Unit
+){
     Card (
         modifier = Modifier
             .fillMaxWidth()
+            .clickable { onClick() },
     ) {
         val date = "7/08/2024 08:45"
 
