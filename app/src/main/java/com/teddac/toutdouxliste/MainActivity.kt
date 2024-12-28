@@ -4,14 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.EaseIn
+import androidx.compose.animation.core.EaseOut
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -37,30 +40,46 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-
                     NavHost(
                         navController = navController,
-                        startDestination = TodoScreen.List.name
+                        startDestination = TodoScreen.List.name,
+                        enterTransition = {
+                            fadeIn(
+                                animationSpec = tween(
+                                    250, easing = EaseOut
+                                )
+                            ) + slideIntoContainer(
+                                animationSpec = tween(250, easing = EaseOut),
+                                towards = AnimatedContentTransitionScope.SlideDirection.Start
+                            )
+                        },
+                        exitTransition = {
+                            fadeOut(
+                                animationSpec = tween(
+                                    200, easing = EaseIn
+                                )
+                            ) /*+ slideOutOfContainer(
+                                animationSpec = tween(300, easing = EaseOut),
+                                towards = AnimatedContentTransitionScope.SlideDirection.Start
+                            )*/
+                        }
                     ){
-                        composable(route = TodoScreen.List.name){
+                        composable(
+                            route = TodoScreen.List.name
+                        ){
                             ListPage(
-                                onSelectionChange = {navController.navigate(TodoScreen.Edit.name)}
+                                onSelectionChange = {navController.navigate(TodoScreen.Edit.name)},
+                                onClickAddItem = {navController.navigate(TodoScreen.Edit.name)}
                             )
                         }
-                        composable(route = TodoScreen.Edit.name){
+                        composable(
+                            route = TodoScreen.Edit.name
+                        ){
                             EditPage()
                         }
                     }
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ToutDouxListeTheme {
-        ListPage({})
     }
 }

@@ -21,7 +21,10 @@ ToDo list application made with android compose and firebase.
     - [x] Advanced Time picker
     - [x] Basic Time picker (advanced are not user friendly)     
   - Navigation
-    - [ ] Click card to go to edit page
+    - [x] Click card to go to edit page
+    - [x] Click add button go to edit page
+    - [x] Animation
+      - [ ] fix transition direction
   - [ ] [App bar](https://developer.android.com/develop/ui/compose/components/app-bars)
     - List Page
       - [ ] Title
@@ -58,6 +61,7 @@ ToDo list application made with android compose and firebase.
 - [ ] Logo
 - [ ] Accessibility, contentDescription,...
 - [ ] Notifications
+- [ ] Splash screen
 
 ### Goal
 

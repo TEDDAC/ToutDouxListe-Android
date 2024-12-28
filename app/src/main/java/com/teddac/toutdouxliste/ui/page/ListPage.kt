@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.Button
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -15,19 +14,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.rememberNavController
 import com.teddac.toutdouxliste.ui.component.TaskCard
 import com.teddac.toutdouxliste.ui.theme.ToutDouxListeTheme
 
 @Composable
 fun ListPage(
     onSelectionChange: () -> Unit,
-    modifier: Modifier = Modifier
+    onClickAddItem: () -> Unit
 ){
     Box {
         TaskList(onSelectionChange = onSelectionChange)
         FloatingActionButton(
-            onClick = {},
+            onClick = onClickAddItem,
             modifier = Modifier
                 .align(Alignment.BottomEnd).padding(16.dp)
         ) {
@@ -39,9 +37,7 @@ fun ListPage(
 @Composable
 fun TaskList(
     onSelectionChange: () -> Unit,
-    modifier: Modifier = Modifier
 ){
-    val navController = rememberNavController()
     LazyColumn (
         horizontalAlignment = Alignment.CenterHorizontally,
         contentPadding = PaddingValues(16.dp), // padding around list, not between each element
@@ -89,8 +85,11 @@ fun TaskList(
 
 @Preview(showBackground = true)
 @Composable
-fun listPagePreview() {
+fun ListPagePreview() {
     ToutDouxListeTheme {
-        ListPage({})
+        ListPage(
+            onSelectionChange = {},
+            onClickAddItem = {}
+        )
     }
 }
