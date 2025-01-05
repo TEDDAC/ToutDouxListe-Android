@@ -38,6 +38,7 @@ ToDo list application made with android compose and firebase.
   - [ ] Create Entity
   - List Page
     - [x] Load and show stubbed task
+    - [ ] ViewModel
     - [ ] Check task to set to DONE
     - [ ] Slide card to right or left to delete
       - [ ] Undo [snackbar](https://developer.android.com/develop/ui/compose/components/snackbar)

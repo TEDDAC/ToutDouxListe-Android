@@ -25,6 +25,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.teddac.toutdouxliste.data.TaskViewModel
+import com.teddac.toutdouxliste.model.Task
 import com.teddac.toutdouxliste.ui.component.CustomTimePicker
 import com.teddac.toutdouxliste.ui.component.CustomDatePicker
 import java.util.Calendar
@@ -32,10 +34,14 @@ import java.util.Calendar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditPage(
+    taskId: Int?,
+    viewModel: TaskViewModel = TaskViewModel(),
     navigateBack: () -> Unit,
 ){
-    var title by remember { mutableStateOf("") }
-    var description by remember { mutableStateOf("") }
+    val task = if(taskId != null) viewModel.getTask(taskId) else Task()
+
+    var title by remember { mutableStateOf(task.title) }
+    var description by remember { mutableStateOf(task.description ?: "") }
     val datePickerState = rememberDatePickerState()
 
     val currentTime = Calendar.getInstance()

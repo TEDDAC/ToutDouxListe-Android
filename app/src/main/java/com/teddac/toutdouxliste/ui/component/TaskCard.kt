@@ -33,7 +33,7 @@ fun TaskCard(
             .clickable { onClick() },
     ) {
         val dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
-        val date = task.date.format(dateTimeFormatter)
+        val date = task.date?.format(dateTimeFormatter)
 
         Column (
             modifier = Modifier
@@ -44,21 +44,26 @@ fun TaskCard(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 TaskCardTitle(task.title)
-                Text(
-                    date,
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp),
-                    style = TextStyle(fontSize = 12.sp),
-                    color = Color(0xFF777777)
-                    // Todo: Alignement
-                )
+                if(date != null){
+                    Text(
+                        date,
+                        modifier = Modifier
+                            .padding(horizontal = 8.dp),
+                        style = TextStyle(fontSize = 12.sp),
+                        color = Color(0xFF777777)
+                        // Todo: Alignement
+                    )
+                }
+
                 Spacer(Modifier.weight(1f))
                 Checkbox(
                     checked = task.isDone,
                     onCheckedChange = {}
                 )
             }
-            TaskCardDescription(task.description)
+            if(task.description != null){
+                TaskCardDescription(task.description)
+            }
         }
     }
 }

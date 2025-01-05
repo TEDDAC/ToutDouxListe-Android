@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.teddac.toutdouxliste.data.Stub
+import com.teddac.toutdouxliste.data.TaskViewModel
 import com.teddac.toutdouxliste.model.Task
 import com.teddac.toutdouxliste.ui.component.TaskCard
 import com.teddac.toutdouxliste.ui.theme.ToutDouxListeTheme
@@ -30,10 +31,11 @@ import com.teddac.toutdouxliste.ui.theme.ToutDouxListeTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListPage(
-    onSelectionChange: () -> Unit,
+    viewModel: TaskViewModel = TaskViewModel(),
+    onSelectionChange: (Int) -> Unit,
     onClickAddItem: () -> Unit
 ){
-    val tasks = Stub().tasks
+    val tasks = viewModel.getTasks()
 
     Scaffold(
         topBar = {
@@ -74,7 +76,7 @@ fun ListPage(
 @Composable
 fun TaskList(
     tasks: List<Task>,
-    onSelectionChange: () -> Unit,
+    onSelectionChange: (Int) -> Unit,
 ){
     LazyColumn (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -82,11 +84,11 @@ fun TaskList(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
     ) {
-        tasks.forEach { task ->
+        tasks.forEachIndexed { index, task ->
             item {
                 TaskCard(
                     task = task,
-                    onClick = onSelectionChange
+                    onClick = { onSelectionChange(index) }
                 )
             }
         }

@@ -49,7 +49,9 @@ fun TodoNavigation(
             route = TodoScreen.List.name
         ){
             ListPage(
-                onSelectionChange = {navController.navigate(TodoScreen.Edit.name)},
+                onSelectionChange = { index ->
+                    navController.navigate(TodoScreen.Edit.name)
+                },
                 onClickAddItem = {navController.navigate(TodoScreen.Edit.name)}
             )
         }
@@ -57,6 +59,7 @@ fun TodoNavigation(
             route = TodoScreen.Edit.name
         ){
             EditPage(
+                taskId = 0,
                 navigateBack = { navController.popBackStack() }
             )
         }
