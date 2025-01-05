@@ -18,9 +18,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.teddac.toutdouxliste.model.Task
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 @Composable
 fun TaskCard(
+    task: Task,
     onClick: () -> Unit
 ){
     Card (
@@ -28,7 +32,8 @@ fun TaskCard(
             .fillMaxWidth()
             .clickable { onClick() },
     ) {
-        val date = "7/08/2024 08:45"
+        val dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
+        val date = task.date.format(dateTimeFormatter)
 
         Column (
             modifier = Modifier
@@ -38,7 +43,7 @@ fun TaskCard(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                TaskCardTitle("Title")
+                TaskCardTitle(task.title)
                 Text(
                     date,
                     modifier = Modifier
@@ -49,11 +54,11 @@ fun TaskCard(
                 )
                 Spacer(Modifier.weight(1f))
                 Checkbox(
-                    checked = false,
+                    checked = task.isDone,
                     onCheckedChange = {}
                 )
             }
-            TaskCardDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, ullamco laboris nisi ut aliquip")
+            TaskCardDescription(task.description)
         }
     }
 }

@@ -1,5 +1,10 @@
 package com.teddac.toutdouxliste.model
 
-class Task {
+import java.time.LocalDateTime
 
-}
+data class Task(
+    val title: String,
+    val description: String,
+    val isDone: Boolean,
+    val date: LocalDateTime
+)

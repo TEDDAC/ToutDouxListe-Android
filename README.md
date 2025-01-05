@@ -27,24 +27,25 @@ ToDo list application made with android compose and firebase.
       - [ ] fix transition direction
   - [ ] [App bar](https://developer.android.com/develop/ui/compose/components/app-bars)
     - List Page
-      - [ ] Title
+      - [X] Title
     - Edit Page
       - [ ] Title
       - [ ] Back button
       - [ ] Delete
       - [ ] Validate / save
+    - [ ] Fix android status bar color
 - [ ] Data binding between database and UI
-  - [ ] Initialize database
   - [ ] Create Entity
   - List Page
-    - [ ] Load and show task
-    - [ ] Check task to set to DON
+    - [x] Load and show stubbed task
+    - [ ] Check task to set to DONE
     - [ ] Slide card to right or left to delete
       - [ ] Undo [snackbar](https://developer.android.com/develop/ui/compose/components/snackbar)
   - Task Page
-    - [ ] Load data of task
+    - [ ] Load stubbed data of task
     - [ ] Save when navback
     - [ ] Delete task
+  - [ ] Link to local database
 
 ### Backlog
   

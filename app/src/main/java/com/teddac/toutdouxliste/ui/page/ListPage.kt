@@ -3,6 +3,7 @@ package com.teddac.toutdouxliste.ui.page
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -21,6 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.teddac.toutdouxliste.data.Stub
+import com.teddac.toutdouxliste.model.Task
 import com.teddac.toutdouxliste.ui.component.TaskCard
 import com.teddac.toutdouxliste.ui.theme.ToutDouxListeTheme
 
@@ -30,6 +33,8 @@ fun ListPage(
     onSelectionChange: () -> Unit,
     onClickAddItem: () -> Unit
 ){
+    val tasks = Stub().tasks
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -47,9 +52,14 @@ fun ListPage(
         }
     ) { innerPadding ->
         Box(
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxHeight()
         ) {
-            TaskList(onSelectionChange = onSelectionChange)
+            TaskList(
+                tasks = tasks,
+                onSelectionChange = onSelectionChange
+            )
             FloatingActionButton(
                 onClick = onClickAddItem,
                 modifier = Modifier
@@ -63,6 +73,7 @@ fun ListPage(
 
 @Composable
 fun TaskList(
+    tasks: List<Task>,
     onSelectionChange: () -> Unit,
 ){
     LazyColumn (
@@ -71,41 +82,13 @@ fun TaskList(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
     ) {
-        item {
-            TaskCard(onClick = onSelectionChange)
-        }
-        item {
-            TaskCard(onClick = onSelectionChange)
-        }
-        item {
-            TaskCard(onClick = onSelectionChange)
-        }
-        item {
-            TaskCard(onClick = onSelectionChange)
-        }
-        item {
-            TaskCard(onClick = onSelectionChange)
-        }
-        item {
-            TaskCard(onClick = onSelectionChange)
-        }
-        item {
-            TaskCard(onClick = onSelectionChange)
-        }
-        item {
-            TaskCard(onClick = onSelectionChange)
-        }
-        item {
-            TaskCard(onClick = onSelectionChange)
-        }
-        item {
-            TaskCard(onClick = onSelectionChange)
-        }
-        item {
-            TaskCard(onClick = onSelectionChange)
-        }
-        item {
-            TaskCard(onClick = onSelectionChange)
+        tasks.forEach { task ->
+            item {
+                TaskCard(
+                    task = task,
+                    onClick = onSelectionChange
+                )
+            }
         }
     }
 }
