@@ -25,11 +25,12 @@ ToDo list application made with android compose and firebase.
     - [x] Click add button go to edit page
     - [x] Animation
       - [ ] fix transition direction
+    - [x] Pass data to edit page
   - [ ] [App bar](https://developer.android.com/develop/ui/compose/components/app-bars)
     - List Page
-      - [X] Title
+      - [x] Title
     - Edit Page
-      - [ ] Title
+      - [x] Title
       - [ ] Back button
       - [ ] Delete
       - [ ] Validate / save
@@ -42,8 +43,9 @@ ToDo list application made with android compose and firebase.
     - [ ] Check task to set to DONE
     - [ ] Slide card to right or left to delete
       - [ ] Undo [snackbar](https://developer.android.com/develop/ui/compose/components/snackbar)
-  - Task Page
-    - [ ] Load stubbed data of task
+  - Edit Page
+    - [x] Load stubbed data of task
+    - [ ] Handle date and time
     - [ ] Save when navback
     - [ ] Delete task
   - [ ] Link to local database
@@ -56,6 +58,7 @@ ToDo list application made with android compose and firebase.
 - [ ] Design, [Material](https://m3.material.io/)
   - [ ] Theming
   - [ ] Shared app bar beetween screen
+  - [ ] [Shared](https://developer.android.com/develop/ui/compose/animation/shared-elements?hl=fr) title and descriptionin transition between list and edit page
 - [ ] Logo
 - [ ] Accessibility, contentDescription,...
 - [ ] Notifications
@@ -64,7 +67,7 @@ ToDo list application made with android compose and firebase.
 
 #### Cancelled
 
-I want to use local data base
+I want to use local database
 
 - Firebase configuration
   - [ ] Create project in firebase console

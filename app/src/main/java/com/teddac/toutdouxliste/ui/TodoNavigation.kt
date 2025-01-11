@@ -50,16 +50,18 @@ fun TodoNavigation(
         ){
             ListPage(
                 onSelectionChange = { index ->
-                    navController.navigate(TodoScreen.Edit.name)
+                    navController.navigate("edit/${index}")
                 },
                 onClickAddItem = {navController.navigate(TodoScreen.Edit.name)}
             )
         }
         composable(
-            route = TodoScreen.Edit.name
-        ){
+            route = "edit/{id}"
+        ){ navBackStackEntry ->
+            val id = navBackStackEntry.arguments?.getString("id")
+
             EditPage(
-                taskId = 0,
+                taskId = id?.toIntOrNull(),
                 navigateBack = { navController.popBackStack() }
             )
         }

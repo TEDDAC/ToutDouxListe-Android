@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -85,7 +87,10 @@ fun TaskList(
         modifier = Modifier
     ) {
         tasks.forEachIndexed { index, task ->
-            item {
+            // key is used by compose to identify unique composable.
+            // https://developer.android.com/develop/ui/compose/lifecycle?hl=fr#add-info-smart-recomposition
+            // https://stackoverflow.com/questions/68790215/lazycolumn-items-key-parameter-purpose
+            item(key = index) { // TODO: use id as key
                 TaskCard(
                     task = task,
                     onClick = { onSelectionChange(index) }

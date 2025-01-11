@@ -51,6 +51,11 @@ fun EditPage(
         is24Hour = true
     )
 
+    val saveAndNavigateBack = {
+        // save by viewModel
+        navigateBack()
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -65,7 +70,7 @@ fun EditPage(
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = navigateBack) {
+                    IconButton(onClick = saveAndNavigateBack) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             contentDescription = "Back to list"
