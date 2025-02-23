@@ -6,38 +6,51 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.teddac.toutdouxliste.data.Stub
 import com.teddac.toutdouxliste.data.TaskViewModel
 import com.teddac.toutdouxliste.model.Task
 import com.teddac.toutdouxliste.ui.component.TaskCard
-import com.teddac.toutdouxliste.ui.theme.ToutDouxListeTheme
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListPage(
-    viewModel: TaskViewModel = TaskViewModel(),
-    onSelectionChange: (Int) -> Unit,
-    onClickAddItem: () -> Unit
+    viewModel: TaskViewModel = TaskViewModel()
 ){
     val tasks = viewModel.getTasks()
+    var selectedTaskId by remember { mutableStateOf<Int?>(null) }
+
+    var showBottomSheet by remember { mutableStateOf(false) }
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val scope = rememberCoroutineScope()
+    val hideDrawer : () -> Unit = {
+        scope.launch { sheetState.hide() }.invokeOnCompletion {
+            if (!sheetState.isVisible) {
+                showBottomSheet = false
+            }
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -62,14 +75,36 @@ fun ListPage(
         ) {
             TaskList(
                 tasks = tasks,
-                onSelectionChange = onSelectionChange
+                onSelectionChange = { id ->
+                    selectedTaskId = id
+                    showBottomSheet = true
+                }
             )
             FloatingActionButton(
-                onClick = onClickAddItem,
+                onClick = {
+                    showBottomSheet = true
+                    selectedTaskId = null
+                          },
                 modifier = Modifier
                     .align(Alignment.BottomEnd).padding(16.dp)
             ) {
                 Icon(Icons.Filled.Add, "Add task button.")
+            }
+        }
+
+        if(showBottomSheet){
+            ModalBottomSheet(
+                onDismissRequest = { showBottomSheet = false },
+                sheetState = sheetState,
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(top = 128.dp)
+            ) {
+                EditPage(
+                    taskId = selectedTaskId,
+                    onSave = hideDrawer,
+                    onCancel = hideDrawer
+                )
             }
         }
     }
@@ -97,16 +132,5 @@ fun TaskList(
                 )
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ListPagePreview() {
-    ToutDouxListeTheme {
-        ListPage(
-            onSelectionChange = {},
-            onClickAddItem = {}
-        )
     }
 }
